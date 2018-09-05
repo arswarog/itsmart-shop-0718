@@ -1,13 +1,14 @@
+import { List } from "immutable";
 
-interface IOptionsTitles {
+export interface IOptionsTitles {
     [key: string]: string;
 }
 
-interface IOptions {
+export interface IOptions {
     [key: string]: string;
 }
 
-interface IGood {
+export interface IGood {
     id: string;
     name: string;
     categoryId: string;
@@ -17,8 +18,8 @@ interface IGood {
     options?: IOptions;  
 }
 
-interface ICategory {
+export interface ICategory {
     id: string;
     name: string;
-    children?: ICategory[];
+    children?: List<ICategory>;
 }

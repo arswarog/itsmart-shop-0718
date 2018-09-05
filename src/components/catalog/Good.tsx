@@ -1,16 +1,22 @@
 import * as React from 'react';
 import { Button, Card, CardBody, CardImg, CardSubtitle, CardText, CardTitle, } from 'reactstrap';
+import { IGood } from '../../common/content';
 
-export class Good extends React.Component {
+interface IProps {
+    good: IGood
+}
+
+export class Good extends React.Component<IProps> {
     public render() {
+        const { good } = this.props;
         return (
             <Card>
-                <CardImg top={true} width="100%" src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180" alt="Card image cap" />
+                <CardImg top={true} width="100%" src={good.image} alt="Card image cap" />
                 <CardBody>
-                    <CardTitle>Card title</CardTitle>
-                    <CardSubtitle>Card subtitle</CardSubtitle>
-                    <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
-                    <Button>Button</Button>
+                    <CardTitle>{good.name} / {good.categoryId}</CardTitle>
+                    <CardSubtitle>{good.price}</CardSubtitle>
+                    <CardText>{good.description}</CardText>
+                    <Button>Buy</Button>
                 </CardBody>
             </Card>
         )

@@ -4,23 +4,11 @@ import * as ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import App from './App';
-import { ActionType } from './common/actions';
 import './index.css';
 import { combined } from './reducers';
 import registerServiceWorker from './registerServiceWorker';
 
-const store = createStore(combined, {
-  catalog: {}
-});
-
-const catalog = {name: 'asdasd'};
-
-store.dispatch({
-  catalog,
-  type: ActionType.init,
-}) 
-
-
+const store = createStore(combined);
 
 ReactDOM.render(
   <Provider store={store}>
