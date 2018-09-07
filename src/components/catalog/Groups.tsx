@@ -1,15 +1,28 @@
 import * as React from 'react';
 import { ListGroup, ListGroupItem } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import { ICategory } from '../../common/content';
+import { List } from 'immutable';
 
-export class Groups extends React.Component {
+interface IProps {
+    groups: List<ICategory>
+}
+
+export class Groups extends React.Component<IProps> {
     public render() {
+        const { groups } = this.props;
         return (
 
             <ListGroup>
-                <ListGroupItem><Link to="/category/12">CAtegory 12</Link></ListGroupItem>
+                {groups.map((item: ICategory, index) =>
+                    {
+                        const catURL = '/category/' + item.id;
+                        return <ListGroupItem key={index}><Link to={catURL}>{item.name}</Link></ListGroupItem>;
+                    }
+                )}                
 
             </ListGroup>
+
         )
     }
 }
