@@ -17,6 +17,7 @@ export class Good extends React.Component<IProps> {
                     <CardSubtitle>{good.price}</CardSubtitle>
                     <CardText>{good.description}</CardText>
                     <Button>Buy</Button>
+                    
                 </CardBody>
             </Card>
         )

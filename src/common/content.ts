@@ -18,8 +18,11 @@ export interface IGood {
     options?: IOptions;  
 }
 
-export interface ICategory {
+export interface ICategoryBase {
     id: string;
     name: string;
-    children?: List<ICategory>;
+}
+
+export interface ICategory extends ICategoryBase {
+    children: List<ICategoryBase>;
 }

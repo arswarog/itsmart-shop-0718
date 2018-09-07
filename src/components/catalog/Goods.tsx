@@ -5,7 +5,7 @@ import { IGood } from '../../common/content';
 import { List } from 'immutable';
 
 interface IProps {
-    goods: List<IGood>
+    goods: List<IGood>,
 }
 
 export class Goods extends React.Component<IProps> {

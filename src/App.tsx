@@ -14,9 +14,10 @@ class App extends React.Component {
         <Header />
         <Router history={history}>
           <Switch>
+            <Route path="/category/:id/:idSub" component={Catalog} />
             <Route path="/category/:id" component={Catalog} />
             {/* <Route path="/" exact={true} component={Catalog} /> */}
-            <Redirect path="/" to="/category/12" />
+            <Redirect path="/" to="/category/1/12" />
           </Switch>
         </Router>
         <Footer />
