@@ -22,7 +22,8 @@ export class Groups extends React.Component<IProps> {
                             {
                                 item.children.map((child: ICategoryBase, index2) => {
                                     const childURL = `/category/${item.id}/${child.id}`;
-                                    return <ListGroupItem key={index2}><Link to={childURL}>{child.name}</Link>
+                                    return <ListGroupItem key={index2}>
+                                        <Link to={childURL}>{child.name}</Link>
                                     </ListGroupItem>
                                 }
                                 )

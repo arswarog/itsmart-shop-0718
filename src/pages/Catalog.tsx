@@ -21,6 +21,7 @@ interface IProps {
     groups: List<ICategory>,
     goods: List<IGood>,
     catId: string,
+    buyGood: any
 }
 
 
@@ -50,7 +51,7 @@ export const Catalog = connect(
                         <Groups groups={this.props.groups} catId={this.props.catId} />
                     </Col>
                     <Col xs="9">
-                        <Goods goods={this.props.goods} />
+                        <Goods buyGood={this.props.buyGood} goods={this.props.goods} />
                     </Col>
                 </Row>);
         }

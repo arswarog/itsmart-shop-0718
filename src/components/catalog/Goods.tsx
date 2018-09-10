@@ -6,6 +6,7 @@ import { List } from 'immutable';
 
 interface IProps {
     goods: List<IGood>,
+    buyGood: (item: IGood) => void;
 }
 
 export class Goods extends React.Component<IProps> {
@@ -18,12 +19,12 @@ export class Goods extends React.Component<IProps> {
         }
 
         const { goods } = this.props;
-
+        const buyGood = (item: IGood) => () => this.props.buyGood(item);
         return (
             <Row>    
                 {goods.map((item:IGood, index) =>           
                 <Col key={index} {...cfg}>
-                    <Good good={item} />
+                    <Good buyGood={buyGood(item)} good={item} />
                 </Col>
                 )}
             </Row>);

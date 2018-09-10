@@ -1,10 +1,15 @@
 import * as React from 'react';
 import { Button, Card, CardBody, CardImg, CardSubtitle, CardText, CardTitle, } from 'reactstrap';
+
 import { IGood } from '../../common/content';
 
+
+
 interface IProps {
-    good: IGood
+    good: IGood,
+    buyGood: any
 }
+
 
 export class Good extends React.Component<IProps> {
     public render() {
@@ -16,8 +21,8 @@ export class Good extends React.Component<IProps> {
                     <CardTitle>{good.name} / {good.categoryId}</CardTitle>
                     <CardSubtitle>{good.price}</CardSubtitle>
                     <CardText>{good.description}</CardText>
-                    <Button>Buy</Button>
-                    
+                    <Button onClick={this.props.buyGood}>Buy</Button>
+
                 </CardBody>
             </Card>
         )
