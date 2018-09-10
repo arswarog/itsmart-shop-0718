@@ -9,6 +9,10 @@ export interface ICartState {
     summ: number,
 }
 
+function findItem(items: List<ICartItem>, goodId: string): ICartItem {
+    return items.find((item: ICartItem) => item.goodId === goodId);
+}
+
 export function cart(state: ICartState, action: AnyAction) {
     if (!state) {
         state = {
@@ -17,12 +21,21 @@ export function cart(state: ICartState, action: AnyAction) {
         }
     }
     switch (action.type) {
-        case ActionType.buyGood: 
-        return {
-            ...state,
-            items: state.items.push({goodId: action.good.id, good: action.good as IGood, quant: 1})
-
-        } 
+        case ActionType.buyGood:
+            const foundItem = findItem(state.items, action.good.id);
+            if (foundItem) {
+                return {
+                    ...state,
+                    items: state.items.splice(state.items.indexOf(foundItem),1, { goodId: foundItem.good.id, good: foundItem.good as IGood, quant: foundItem.quant + 1 }),
+                    summ: state.summ + action.good.price
+                }
+            } else {
+                return {
+                    ...state,
+                    items: state.items.push({ goodId: action.good.id, good: action.good as IGood, quant: 1 }),
+                    summ: state.summ + action.good.price
+                }
+            }
     }
 
     return state;
