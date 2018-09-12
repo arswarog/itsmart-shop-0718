@@ -1,6 +1,8 @@
 
 export enum ActionType {
     init = 'init',
-    buyGood = 'buyGood',    
+    buyGood = 'buyGood', 
+    removeGood = 'removeGood',
+    deleteGood = 'deleteGood',    
 };
 
