@@ -7,5 +7,6 @@ app.get('/api/', function (req, res) {
 });
 
 app.listen(3000, function () {
+    /* tslint:disable */
     console.log('Example app listening on port 3000!');
 });

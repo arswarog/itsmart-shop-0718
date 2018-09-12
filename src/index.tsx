@@ -17,3 +17,14 @@ ReactDOM.render(
   document.getElementById('root') as HTMLElement
 );
 registerServiceWorker();
+
+
+
+async function request() {
+  const response = await fetch('http://google.ru/');
+  const body = await response.text();
+  console.log(body);
+
+}
+
+request();
