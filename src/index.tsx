@@ -7,6 +7,7 @@ import App from './App';
 import './index.css';
 import { combined } from './reducers';
 import registerServiceWorker from './registerServiceWorker';
+import { fillCat } from './actions/catalog';
 
 const store = createStore(combined);
 
@@ -21,10 +22,16 @@ registerServiceWorker();
 
 
 async function request() {
-  const response = await fetch('http://google.ru/');
-  const body = await response.text();
-  console.log(body);
+  const response = await fetch('/api/cats');
+  const body = await response.json();
+  /* tslint:disable */
+  // store.dispatch({
+  //   categories: body,
+  //   type: ActionType.fillCat,
+  // });
+  store.dispatch(fillCat(body));
 
 }
+
 
 request();

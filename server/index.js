@@ -12,7 +12,9 @@ app.get('/api/cats', function (req, res) {
 
 app.get('/api/cat/:id', function (req, res) {
     const cat = flatCats.find(item => item.id === req.params.id);
+    /* tslint:disable */
     console.log(cat);
+    /* tslint:disable */
     console.log(goods);
     if (cat)
         res.json(goods.filter(item => item.categoryId === cat.id));
@@ -21,6 +23,7 @@ app.get('/api/cat/:id', function (req, res) {
 });
 
 app.listen(8081, function () {
+    /* tslint:disable */
     console.log('Example app listening on port 8081!');
 });
 
