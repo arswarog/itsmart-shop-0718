@@ -51,7 +51,13 @@ export function cart(state: ICartState, action: AnyAction): ICartState {
                 ...state,
                 items: itemsDelete,
                 summ: itemsDelete.reduce((sum: number, item: ICartItem) => sum + (item ? item.good.price * item.quant : 0), 0)
-            }       
+            }  
+        case ActionType.emptyCart:
+            return {
+                ...state,
+                items: Map<string, ICartItem>(),
+                summ: 0
+            }                  
 
 
         //    //         const foundItem = state.items.find((item: ICartItem) => item.goodId === action.good.id);

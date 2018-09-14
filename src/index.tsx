@@ -2,14 +2,15 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import thunk from 'redux-thunk';
+import { createStore, applyMiddleware } from 'redux';
 import App from './App';
 import './index.css';
 import { combined } from './reducers';
 import registerServiceWorker from './registerServiceWorker';
 import { fillCat } from './actions/catalog';
 
-const store = createStore(combined);
+const store = createStore(combined, applyMiddleware(thunk));
 
 ReactDOM.render(
   <Provider store={store}>
@@ -35,3 +36,4 @@ async function request() {
 
 
 request();
+

@@ -13,7 +13,8 @@ interface IProps {
     items: Map<string, ICartItem>,
     buyGood: (item: IGood) => void,
     removeGood: (item: IGood) => void,        
-    deleteGood: (item: IGood) => void,            
+    deleteGood: (item: IGood) => void,  
+    order: any          
 }
 
 export const Cart = connect(
@@ -35,7 +36,9 @@ export const Cart = connect(
             const buyGood = (item: IGood) => () => this.props.buyGood(item);
             const removeGood = (item: IGood) => () => this.props.removeGood(item);            
             const deleteGood = (item: IGood) => () => this.props.deleteGood(item);                        
+            const order = (cartitems: Map<string, ICartItem>) => () => this.props.order(cartitems);                                    
             return (
+                <div>
                 <Row>
                     {items.map((item: ICartItem, index) =>
                         <Col key={index} {...cfg}>
@@ -60,7 +63,9 @@ export const Cart = connect(
                                 </CardBody>
                             </Card>
                         </Col>
-                    )}
-                </Row>);
+                    ).toArray()}
+                </Row>
+                <button onClick={order(items)} className="btn btn-primary btn-lg btn-block"> Оформить заказ</button>
+                </div>);
         }
     })

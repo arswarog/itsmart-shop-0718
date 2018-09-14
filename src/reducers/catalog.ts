@@ -3,25 +3,10 @@ import { AnyAction } from "redux";
 import { ICategory, IGood } from '../common/content';
 import { ActionType } from '../common/actions';
 
-
 export interface ICatalogState {
     groups: List<ICategory>,
     goods: List<IGood>,
 }
-
-let newgoods: List<IGood> = List();
-
-async function request(catID: string) {
-    const response = await fetch('/api/cat/' + catID);
-    newgoods = await response.json();
-    /* tslint:disable */
-    // store.dispatch({
-    //   categories: body,
-    //   type: ActionType.fillCat,
-    // });
-//    store.dispatch(fillGoods(body));
-  
-  } 
 
 export function catalog(state: ICatalogState, action: AnyAction) {
     if (!state) {
@@ -45,11 +30,11 @@ export function catalog(state: ICatalogState, action: AnyAction) {
        
         case ActionType.fillGoods:
    
-            request(action.catId);
+            // request(action.catId);
             return {
                 ...state,
-                goods: List<IGood>(newgoods),
-                groups: List<ICategory>(state.groups),                
+                goods: List<IGood>(action.goods),
+                // groups: List<ICategory>(state.groups),                
             }
 
     }    

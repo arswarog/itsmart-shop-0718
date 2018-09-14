@@ -10,6 +10,10 @@ app.get('/api/cats', function (req, res) {
     res.send(cats);
 });
 
+app.post('/api/order', function (req, res) {
+    res.send({});
+});
+
 app.get('/api/cat/:id', function (req, res) {
     const cat = flatCats.find(item => item.id === req.params.id);
     /* tslint:disable */
