@@ -5,5 +5,6 @@ export enum ActionType {
     removeGood = 'removeGood',
     deleteGood = 'deleteGood',    
     fillCat = 'fillCat',     
+    fillGoods = 'fillGoods'    
 };
 

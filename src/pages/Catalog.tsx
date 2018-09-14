@@ -72,3 +72,5 @@ function filterate(goods: List<IGood>, groups: List<ICategory>, catId: string, s
     }
 }
 
+ 
+

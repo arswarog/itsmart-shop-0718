@@ -9,6 +9,20 @@ export interface ICatalogState {
     goods: List<IGood>,
 }
 
+let newgoods: List<IGood> = List();
+
+async function request(catID: string) {
+    const response = await fetch('/api/cat/' + catID);
+    newgoods = await response.json();
+    /* tslint:disable */
+    // store.dispatch({
+    //   categories: body,
+    //   type: ActionType.fillCat,
+    // });
+//    store.dispatch(fillGoods(body));
+  
+  } 
+
 export function catalog(state: ICatalogState, action: AnyAction) {
     if (!state) {
         state = {
@@ -21,12 +35,28 @@ export function catalog(state: ICatalogState, action: AnyAction) {
         case ActionType.fillCat:
             return {
                 ...state,
-                goods: List<IGood>(),
+                goods: List<IGood>(state.goods),
                 groups: List<ICategory>(action.categories),                
             }
 
     }
+
+    switch (action.type) {
+       
+        case ActionType.fillGoods:
+   
+            request(action.catId);
+            return {
+                ...state,
+                goods: List<IGood>(newgoods),
+                groups: List<ICategory>(state.groups),                
+            }
+
+    }    
+
     return state;
 }
+
+
 
 
