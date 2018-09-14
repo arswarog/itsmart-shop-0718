@@ -14,7 +14,7 @@ class App extends React.Component {
       <Router history={history}>
         <div>
           <Header />
-          <Switch>
+          <Switch> 
             <Route path="/category/:id/:idSub" component={Catalog} />
             <Route path="/category/:id" component={Catalog} />
             <Route path="/cart/" component={Cart} />
